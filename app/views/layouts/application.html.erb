@@ -9,8 +9,17 @@
   </head>
 
   <body>
-  	<p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+  	<!-- <p class="notice"><%= notice %></p>
+   	<p class="alert"><%= alert %></p> -->
+    <div id="wrapper">
+    	<%= render 'shared/sidebar' %>
+    	<%= yield %>
+    </div>
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
   </body>
 </html>
