@@ -1,0 +1,2 @@
+class StageOfPipeline < ApplicationRecord
+end

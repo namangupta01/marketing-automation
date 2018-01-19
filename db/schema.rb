@@ -10,7 +10,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180119101713) do
+ActiveRecord::Schema.define(version: 20180119140717) do
+
+  create_table "batches", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lead_groups", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lead_sources", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "stage_of_pipelines", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "students", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "phone_number"
+    t.date "date"
+    t.string "query"
+    t.string "address"
+    t.integer "batch_id"
+    t.integer "lead_source_id"
+    t.integer "lead_group_id"
+    t.integer "stage_of_pipeline_id"
+    t.boolean "dnd", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["batch_id"], name: "index_students_on_batch_id"
+    t.index ["lead_group_id"], name: "index_students_on_lead_group_id"
+    t.index ["lead_source_id"], name: "index_students_on_lead_source_id"
+    t.index ["stage_of_pipeline_id"], name: "index_students_on_stage_of_pipeline_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
