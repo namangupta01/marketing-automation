@@ -8,6 +8,7 @@ class CreateStudents < ActiveRecord::Migration[5.1]
     		t.date :date
     		t.string :query
     		t.string :address
+            t.references :user
     		t.references :batch
     		t.references :lead_source
     		t.references :lead_group

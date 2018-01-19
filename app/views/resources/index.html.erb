@@ -1,0 +1,14 @@
+<div class="container">
+  <h2>Add Resources </h2>
+  <p>Add different resources here like lead sources, lead group, pipeline etc..</p>
+  <ul class="nav nav-tabs">
+    <li class="<%= @first %>"><a data-toggle="tab" href="#lead-source">Lead Source</a></li>
+    <li class="<%= @second %>"><a data-toggle="tab" href="#lead-group">Lead Group</a></li>
+    <li class="<%= @third %>"><a data-toggle="tab" href="#pipeline-stages">Pipeline Stages</a></li>  
+  </ul>
+  <div class="tab-content">
+    <%= render 'lead_source', first: @first %>
+    <%= render 'lead_group', second: @second %>
+    <%= render 'pipeline_stages', third: @third %>
+  </div>
+</div>

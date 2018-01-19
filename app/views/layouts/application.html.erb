@@ -6,20 +6,28 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script type="text/javascript" href="https://raw.githubusercontent.com/mistic100/Bootstrap-Confirmation/master/bootstrap-confirmation.min.js"></script>
   </head>
 
   <body>
   	<!-- <p class="notice"><%= notice %></p>
    	<p class="alert"><%= alert %></p> -->
-    <div id="wrapper">
-    	<%= render 'shared/sidebar' %>
-    	<%= yield %>
-    </div>
-    <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-    </script>
+    <% if user_signed_in? %>
+      <div id="wrapper">
+        <%= render 'shared/sidebar' %>
+        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+        <%= yield %>
+      </div>
+      <script>
+        $("#menu-toggle").click(function(e) {
+          e.preventDefault();
+          $("#wrapper").toggleClass("toggled");
+        });
+      </script>
+    <% else %>
+        <%= yield %>
+    <% end %>
+
+
   </body>
 </html>

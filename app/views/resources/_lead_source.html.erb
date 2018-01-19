@@ -1,0 +1,30 @@
+<div id="lead-source" class="tab-pane fade in <%= first %>">
+  <h3>Lead Sources</h3>
+  <% if @lead_sources.any? %>
+  	<ul class="list-group">	
+		<% @lead_sources.all.each do |lead_source| %>
+			<li class="list-group-item" style="display:flex; justify-content: space-between;">
+					<strong><%= lead_source.name %></strong>
+				<div>
+					<a href="lead_source/edit?id=<%= lead_source.id %>"><button class="btn btn-warning">Edit</button></a>
+					<a href="lead_source/delete?id=<%= lead_source.id %>" data-method="delete"><button class="btn btn-danger">Delete</button></a>
+				</div>
+			</li>
+		<% end %>  		
+  	</ul>
+  	<p>Create more lead souce by clicking on the create button</p>
+  <% else %>
+  	<p>No lead Source Present. Add some by clicking on the create button</p>
+  <% end %>
+
+  <div class="container" style="padding-top:20px;">
+	  <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#lead">Create Lead Source</button><br><br>
+	  <div id="lead" class="collapse">
+	    <%= form_for "lead_source", url: "lead_source/create", method: :post do |f| %>
+	    	<%= f.label :name %>
+	    	<%= f.text_field :name %>
+	    	<%= f.submit :create, class: "btn btn-default"%>
+	    <% end %>
+	  </div>
+  </div>
+</div>
