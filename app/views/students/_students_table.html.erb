@@ -1,0 +1,50 @@
+<table class="table">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Email</th>
+			<th>Phone No.</th>
+			<th>Date</th>
+			<th>Query</th>
+			<th>Address</th>
+			<th>Batch</th>
+			<th>Lead Source</th>
+			<th>Lead Group</th>
+			<th>Pipeline Stage</th>
+			<th>Edit</th>
+			<th>Delete</th>
+		</tr>	
+	</thead>
+	<tbody>
+		<% count = 1 %>
+		<% students.each do |student| %>
+			<tr>
+				<th><%= count %></th>
+				<td><%= student.first_name %></td>
+				<td><%= student.last_name %></td>
+				<td><%= student.email %></td>
+				<td><%= student.phone_number %></td>
+				<td><%= student.date %></td>
+				<td><%= student.query %></td>
+				<td><%= student.address %></td>
+				<td><%= student.batch.name %></td>
+				<td><%= student.lead_source.name %></td>
+				<td><%= student.lead_group.name %></td>
+				<td><%= student.stage_of_pipeline.name %></td>
+				<td>
+					<a href="students/edit?id=<%= student.id %>">
+						<button class="btn btn-warning">Edit</button></a>
+				</td>
+				<td>
+					<a href="students/delete?id=<%= student.id %>" data-method="delete">
+						<button class="btn btn-danger">Delete</button></a>
+				</td>
+			</tr>
+			<% count += 1 %>
+		<% end %>
+	</tbody>
+
+
+</table>

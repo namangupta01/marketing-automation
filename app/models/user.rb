@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_many :lead_groups
   has_many :lead_sources
   has_many :stage_of_pipelines
+  has_many :students
 end

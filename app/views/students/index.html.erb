@@ -1,0 +1,61 @@
+<div class="container-fluid">
+  <h2>Students </h2>
+  <p>Student details</p>
+  <% if @students.any? %>
+  	<%= render 'students_table', students: @students %>
+  <% else %>
+  	<p>No student Record. Create records by clicking on the add button.</p>
+  <% end %>
+</div>
+<div class="container" style="padding-top:20px;">
+	<button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#student-form">Add Student</button><br><br>
+	<div id="student-form" class="collapse container-fluid" style="width: 700px;padding-top:30px;">
+		<%= form_for "student", url: "students/create", method: :post do |f| %>
+			<div class="form-group">
+				<%= f.label :first_name  %>
+	    		<%= f.text_field :first_name, class: "form-control" %>
+			</div>
+			<div class="form-group">
+				<%= f.label :last_name %>
+	    		<%= f.text_field :last_name, class: "form-control" %>
+			</div>
+			<div class="form-group">
+				<%= f.label :email %>
+	    		<%= f.email_field :email, class: "form-control" %>
+			</div>
+			<div class="form-group">
+				<%= f.label :phone_number %>
+	    		<%= f.phone_field :phone_number, class: "form-control" %>
+			</div>
+			<div class="form-group">
+				<%= f.label :date %>
+	    		<%= f.date_field :date, class: "form-control" %>
+			</div>
+			<div class="form-group">
+				<%= f.label :query %>
+	    		<%= f.text_field :query, class: "form-control" %>
+			</div>
+			<div class="form-group">
+				<%= f.label :address %>
+	    		<%= f.text_field :address, class: "form-control" %>
+			</div>
+			<div class="form-group student-form-collection-input">
+				<%= f.label :batch %>
+	    		<%= f.collection_select :batch_id, Batch.where(user_id: current_user.id), :id, :name, class: "form-control" %>
+			</div>
+			<div class="form-group student-form-collection-input">
+				<%= f.label :lead_source %>
+	    		<%= f.collection_select :lead_source_id, LeadSource.where(user_id: current_user.id), :id, :name, class: "form-control" %>
+			</div>
+			<div class="form-group student-form-collection-input">
+				<%= f.label :lead_group %>
+	    		<%= f.collection_select :lead_group_id, LeadGroup.where(user_id: current_user.id), :id, :name, class: "form-control" %>
+			</div>
+			<div class="form-group student-form-collection-input">
+				<%= f.label :stage_of_pipeline %>
+	    		<%= f.collection_select :stage_of_pipeline_id, StageOfPipeline.where(user_id: current_user.id), :id, :name, class: "form-control" %>
+			</div>
+	    	<%= f.submit :create, class: "btn btn-default"%>
+	    <% end %>
+	</div>
+</div>

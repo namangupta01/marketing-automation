@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  get 'students/index'
+
+  post 'students/create'
+
+  get 'students/edit'
+
+  delete 'students/delete'
+
+  get 'students/show'
+
   get 'pipeline_stage/index'
 
   post 'pipeline_stage/create'
@@ -30,6 +40,7 @@ Rails.application.routes.draw do
   get 'home/index'
   get '/' => 'home#index'
   get '/resources' => 'resources#index'
+  get '/students' => 'students#index'
 
 
   devise_for :users
