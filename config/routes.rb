@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  get 'email_template/index'
+
+  get 'email_template/show'
+
+  get 'email_template/edit'
+
+  delete 'email_template/delete'
+
+  post 'email_template/create'
+
   post 'batch/create'
 
   get 'batch/index'
@@ -48,10 +58,14 @@ Rails.application.routes.draw do
   get 'resources/create'
 
   get 'home/index'
+
   get '/' => 'home#index'
+
   get '/resources' => 'resources#index'
+
   get '/students' => 'students#index'
 
+  get '/email_templates' => 'email_template#index'
 
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

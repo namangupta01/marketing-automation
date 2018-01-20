@@ -8,4 +8,6 @@ class User < ApplicationRecord
   has_many :stage_of_pipelines
   has_many :students
   has_many :batches
+  has_many :email_templates
+  
 end

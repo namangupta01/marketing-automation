@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180119140717) do
+ActiveRecord::Schema.define(version: 20180120195433) do
 
   create_table "batches", force: :cascade do |t|
     t.string "name"
@@ -18,6 +18,15 @@ ActiveRecord::Schema.define(version: 20180119140717) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_batches_on_user_id"
+  end
+
+  create_table "email_templates", force: :cascade do |t|
+    t.string "name"
+    t.string "content"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_email_templates_on_user_id"
   end
 
   create_table "lead_groups", force: :cascade do |t|

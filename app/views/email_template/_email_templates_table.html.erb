@@ -1,0 +1,30 @@
+<table class="table">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Name</th>
+			<th>Content</th>
+			<th>Edit</th>
+			<th>Delete</th>
+		</tr>	
+	</thead>
+	<tbody>
+		<% count = 1 %>
+		<% @email_templates.each do |email_template| %>
+			<tr>
+				<td><%= count %></td>
+				<td><%= email_template.name %></td>
+				<td><%= email_template.content.html_safe %></td>
+				<td>
+					<a href="email_template/edit?id=<%= email_template.id %>">
+						<button class="btn btn-warning">Edit</button></a>
+				</td>
+				<td>
+					<a href="email_template/delete?id=<%= email_template.id %>" data-method="delete">
+						<button class="btn btn-danger">Delete</button></a>
+				</td>
+			</tr>
+			<% count += 1 %>
+		<% end %>
+	</tbody>
+</table>

@@ -1,0 +1,29 @@
+<div class="container-fluid">
+  <h2>Email Templates </h2>
+  <% if @email_templates.any? %>
+  	<%= render 'email_templates_table', email_templates: @email_templates %>
+  <% else %>
+  	<p>No Email Template found. Create create button.</p>
+  <% end %>
+</div>
+<div class="container" style="padding-top:20px;">
+	<button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#email-template-form">Create Template</button><br><br>
+	<div id="email-template-form" class="collapse " style="padding-top:30px;">
+		<script src="https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
+		<%= form_for "editor", url: "email_template/create" do |f| %>
+			<div>
+				<%= f.text_area "content"%>
+			</div><br>
+			<div>
+				<%= f.label :name %>
+				<%= f.text_field :name %>
+			</div>
+			<div style="padding-top:30px;float: right;">
+				<%= f.submit :create, class: "btn btn-primary" %>
+			</div>
+		<% end %>
+		<script>
+			CKEDITOR.replace( 'editor[content]' );
+		</script>
+	</div>
+</div>
