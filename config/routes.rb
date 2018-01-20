@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  post 'batch/create'
+
+  get 'batch/index'
+
+  get 'batch/edit'
+
+  delete 'batch/delete'
+
+  get 'batch/show'
+
   get 'students/index'
 
   post 'students/create'

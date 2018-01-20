@@ -1,9 +1,10 @@
 class ResourcesController < ApplicationController
   before_action :authenticate_user!
   def index
-  	@lead_sources = LeadSource.all
-  	@lead_groups = LeadGroup.all
-  	@pipeline_stages = StageOfPipeline.all
+  	@lead_sources = current_user.lead_sources
+  	@lead_groups = current_user.lead_groups
+  	@pipeline_stages = current_user.stage_of_pipelines
+    @batches = current_user.batches
   	active_pane
   	session[:resource_active_pane] = nil
   end
@@ -20,6 +21,8 @@ class ResourcesController < ApplicationController
   			@second = "active"
   		elsif value==3
   			@third = "active"
+      elsif value==4
+        @fourth = "active"
   		else
   			@first = "active"
   		end

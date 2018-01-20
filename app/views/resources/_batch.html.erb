@@ -1,0 +1,30 @@
+<div id="batches-tab" class="tab-pane fade in <%= fourth %>">
+  <h3>Batches</h3>
+  <% if @batches.any? %>
+  	<ul class="list-group">	
+		<% @batches.all.each do |batch| %>
+			<li class="list-group-item" style="display:flex; justify-content: space-between;">
+					<strong><%= batch.name %></strong>
+				<div>
+					<a href="batch/edit?id=<%= batch.id %>"><button class="btn btn-warning">Edit</button></a>
+					<a href="batch/delete?id=<%= batch.id %>" data-method="delete"><button class="btn btn-danger">Delete</button></a>
+				</div>
+			</li>
+		<% end %>  		
+  	</ul>
+  	<p>Create more batch by clicking on the create button</p>
+  <% else %>
+  	<p>No batch Present. Add some by clicking on the create button</p>
+  <% end %>
+
+  <div class="container" style="padding-top:20px;">
+	  <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#batch-coll">Create Lead group</button><br><br>
+	  <div id="batch-coll" class="collapse">
+	    <%= form_for "batch", url: "batch/create", method: :post do |f| %>
+	    	<%= f.label :name %>
+	    	<%= f.text_field :name %>
+	    	<%= f.submit :create, class: "btn btn-default"%>
+	    <% end %>
+	  </div>
+  </div>
+</div>
