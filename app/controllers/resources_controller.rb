@@ -1,6 +1,5 @@
 class ResourcesController < ApplicationController
   def index
-    byebug
   	@lead_sources = current_user.lead_sources
   	@lead_groups = current_user.lead_groups
   	@pipeline_stages = current_user.stage_of_pipelines

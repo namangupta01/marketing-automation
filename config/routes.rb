@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  get 'sms_template/index'
+
+  post 'sms_template/create'
+
+  get 'sms_template/edit'
+
+  get 'sms_template/show'
+
+  delete 'sms_template/delete'
+
   get 'email_template/index'
 
   get 'email_template/show'
@@ -66,6 +76,8 @@ Rails.application.routes.draw do
   get '/students' => 'students#index'
 
   get '/email_templates' => 'email_template#index'
+
+  get 'sms_templates' => 'sms_template#index'
 
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

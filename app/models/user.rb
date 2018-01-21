@@ -9,5 +9,6 @@ class User < ApplicationRecord
   has_many :students
   has_many :batches
   has_many :email_templates
+  has_many :sms_templates
   
 end

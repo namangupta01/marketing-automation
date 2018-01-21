@@ -1,0 +1,26 @@
+<div class="container-fluid">
+  <h2>SMS Templates </h2>
+  <% if @sms_templates.any? %>
+  	<%= render 'sms_templates_table', sms_templates: @sms_templates %>
+  <% else %>
+  	<p>No sms Template found. Create one.</p>
+  <% end %>
+</div>
+<div class="container" style="padding-top:20px;">
+	<button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#sms-template-form">Create Template</button><br><br>
+	<div id="sms-template-form" class="collapse " style="padding-top:30px;">
+		<%= form_for "sms-template", url: "sms_template/create" do |f| %>
+			<div class="form-group">
+				<%= f.label :name %>
+				<%= f.text_field :name, class: "form-control"%>
+			</div>
+			<div class="form-group">
+				<%= f.label :content %>
+				<%= f.text_area :content, class: "form-control" %>
+			</div><br>
+			<div style="padding-top:30px;float: right;">
+				<%= f.submit :create, class: "btn btn-primary" %>
+			</div>
+		<% end %>
+	</div>
+</div>

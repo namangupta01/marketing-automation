@@ -1,0 +1,30 @@
+<table class="table">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Name</th>
+			<th>Content</th>
+			<th>Edit</th>
+			<th>Delete</th>
+		</tr>	
+	</thead>
+	<tbody>
+		<% count = 1 %>
+		<% @sms_templates.each do |sms_template| %>
+			<tr>
+				<td><%= count %></td>
+				<td><%= sms_template.name %></td>
+				<td><%= sms_template.content.html_safe %></td>
+				<td>
+					<a href="sms_template/edit?id=<%= sms_template.id %>">
+						<button class="btn btn-warning">Edit</button></a>
+				</td>
+				<td>
+					<a href="sms_template/delete?id=<%= sms_template.id %>" data-method="delete">
+						<button class="btn btn-danger">Delete</button></a>
+				</td>
+			</tr>
+			<% count += 1 %>
+		<% end %>
+	</tbody>
+</table>

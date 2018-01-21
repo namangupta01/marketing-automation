@@ -11,22 +11,8 @@
     </div>
 </div>
 <!-- /#page-content-wrapper -->
-<div class="container">
-	<script src="https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
-	<%= form_for "editor", url: "resources/index", method: "get" do |f| %>
-		<div>
-			<%= f.text_area "editor", name: "editor" %>
-		</div><br>
-		<div>
-			<%= f.label :name %>
-			<%= f.text_field :name %>
-		</div>
-		<div style="padding-top:30px;float: right;">
-			<%= f.submit "Create Email Template", class: "btn btn-primary" %>
-		</div>
-		
-	<% end %>
-	<script>
-		CKEDITOR.replace( 'editor' );
-	</script>
+<div>
+	<textarea class='form-control'>Test</textarea>
+
+
 </div>
