@@ -1,0 +1,68 @@
+<div id="create-campaign" class="tab-pane fade in <%= fourth %> ">
+  <div id="create-campaign" class="tab-pane fade in <%= fourth %> " style="width: 400px;padding-top:30px;">
+    <h3>Fill Campaign Drips Details</h3>
+  </div>
+    <%= form_for "create_campaign", url: "/drip/create", method: :post, :html => {
+                              :id => 'campaign_form' }  do |f| %>
+      <div style="width: 400px;padding-top:30px;">
+      	<div class="form-group">
+      		<%= f.label :name %>
+      		<%= f.text_field :name, class: "form-control", value: params[:create_campaign][:name], :readonly => true %>
+      	</div>
+        <%= f.hidden_field :type, value: params[:create_campaign][:type] %>
+        <%= f.hidden_field :lead_group, value: params[:create_campaign][:lead_group] %>
+        <%= f.hidden_field :stage_of_pipeline, value: params[:create_campaign][:stage_of_pipeline] %>
+        <div class="form-group"> 
+        	<%= f.label :type %>
+      		<%= f.collection_select :type, Type.where(id: params[:create_campaign][:type]), :id, :name, {}, {class: "form-control", :disabled => "disabled"} %>
+        </div>
+        <div class="form-group">
+          <%= f.label :lead_group %>
+          <%= f.collection_select :lead_group, current_user.lead_groups, :id, :name, {}, { class: "form-control", :disabled => "disabled" } %>
+        </div>
+        <div class="form-group">
+          <%= f.label :stage_of_pipeline %>
+          <%= f.collection_select :stage_of_pipeline, current_user.stage_of_pipelines, :id, :name, {}, { class: "form-control", :disabled => "disabled" } %>
+        </div>
+      	<div class="form-group">
+      		<%= f.label :no_of_drips %>
+    	    <%= f.number_field :no_of_drips, class: "form-control", in: 1..10, id: "no_of_drips", value: params[:create_campaign][:no_of_drips], :readonly => true %>
+      	</div>
+      </div>
+      <div class="drip-all-form">
+        <% for i in 1..params[:create_campaign][:no_of_drips].to_i %>
+          <div class="drip-form">
+            <h4>Drip <%= i %></h4>
+            <div id = "drip_<%= i %>" class="well">
+            <div class="form-group">
+              <%= f.label :drip_name %>
+              <%= f.text_field "drip_#{i}_name", class: "form-control", required: true %>
+            </div>
+            <div class="form-group">
+              <%= f.label :template %>
+              <%= f.collection_select "drip_#{i}_template", templates, :id, :name,{}, {class: "form-control"} %>
+            </div>
+            <% datetimepicker = "datetimepicker_#{i}"%>
+            <div class="form-group">
+              <%= f.label :drip_date %>
+              <div class='input-group date' id="<%= datetimepicker %>">
+                  <%= f.text_field datetimepicker, class: "form-control" %>
+                    <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+              </div>
+              <script type="text/javascript">
+                var dateTimePicker = "#<%= datetimepicker %>";
+                console.log(dateTimePicker)
+                $(dateTimePicker).datetimepicker({
+                  defaultDate: Date()
+                });
+              </script>
+            </div>
+          </div>
+          </div>
+        <% end %>
+      </div>
+  	 <%= f.submit :create, class: "btn btn-primary", id: "campaign-drip-submit" %>
+  	<% end %>
+</div>

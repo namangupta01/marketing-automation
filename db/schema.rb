@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180121102502) do
+ActiveRecord::Schema.define(version: 20180123155721) do
 
   create_table "batches", force: :cascade do |t|
     t.string "name"
@@ -18,6 +18,37 @@ ActiveRecord::Schema.define(version: 20180121102502) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_batches_on_user_id"
+  end
+
+  create_table "campaigns", force: :cascade do |t|
+    t.string "name"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.integer "type_id"
+    t.integer "no_of_drips"
+    t.integer "lead_group_id"
+    t.integer "stage_of_pipeline_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lead_group_id"], name: "index_campaigns_on_lead_group_id"
+    t.index ["stage_of_pipeline_id"], name: "index_campaigns_on_stage_of_pipeline_id"
+    t.index ["type_id"], name: "index_campaigns_on_type_id"
+    t.index ["user_id"], name: "index_campaigns_on_user_id"
+  end
+
+  create_table "drips", force: :cascade do |t|
+    t.string "name"
+    t.integer "type_id"
+    t.integer "drip_number"
+    t.integer "template_id"
+    t.integer "campaign_id"
+    t.datetime "date_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["campaign_id"], name: "index_drips_on_campaign_id"
+    t.index ["template_id"], name: "index_drips_on_template_id"
+    t.index ["type_id"], name: "index_drips_on_type_id"
   end
 
   create_table "email_templates", force: :cascade do |t|
@@ -83,6 +114,12 @@ ActiveRecord::Schema.define(version: 20180121102502) do
     t.index ["lead_source_id"], name: "index_students_on_lead_source_id"
     t.index ["stage_of_pipeline_id"], name: "index_students_on_stage_of_pipeline_id"
     t.index ["user_id"], name: "index_students_on_user_id"
+  end
+
+  create_table "types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

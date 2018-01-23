@@ -1,0 +1,15 @@
+<div class="container">
+  <h2>Campaign </h2>
+  <ul class="nav nav-tabs">
+    <li class="<%= @first %>"><a data-toggle="tab" href="#live-campaign">Live Campaign</a></li>
+    <li class="<%= @second %>"><a data-toggle="tab" href="#archived-campaign">Archived Campaign</a></li>
+    <li class="<%= @third %>"><a data-toggle="tab" href="#all-campaign">All Campaign</a></li>
+    <li class="<%= @fourth %>"><a data-toggle="tab" href="#create-campaign">Create Campaign</a></li>  
+  </ul>
+  <div class="tab-content">
+    <%= render 'live_campaign', first: @first, live_campaign: @live_campaigns %>
+    <%= render 'archived_campaign', second: @second, archived_campaigns: @archived_campaigns %>
+    <%= render 'all_campaign', third: @third, all_campaign: @all_campaigns %>
+    <%= render 'create_campaign', fourth: @fourth %>
+  </div>
+</div>

@@ -10,5 +10,6 @@ class User < ApplicationRecord
   has_many :batches
   has_many :email_templates
   has_many :sms_templates
+  has_many :campaigns
   
 end

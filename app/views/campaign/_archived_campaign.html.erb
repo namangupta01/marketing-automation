@@ -1,0 +1,8 @@
+<div id="archived-campaign" class="tab-pane fade in <%= second %>">
+  <h3>Archived Campaigns</h3>
+  <% if @archived_campaigns.any? %>
+  	<%= render 'campaigns_table', campaigns: @archived_campaigns %>
+  <% else %>
+  	<p>No archived campaign.</p>
+  <% end %>
+</div>

@@ -1,0 +1,26 @@
+<table class="table">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Name</th>
+			<th>Start at</th>
+			<th>End at</th>
+			<th>No of drips</th>
+		</tr>	
+	</thead>
+	<tbody>
+		<% count = 1 %>
+		<% campaigns.each do |campaign| %>
+			<tr>
+				<th><%= count %></th>
+				<td><%= campaign.name %></td>
+				<td><%= campaign.start_at %></td>
+				<td><%= campaign.end_at %></td>
+				<td><%= campaign.no_of_drips %></td>
+			</tr>
+			<% count += 1 %>
+		<% end %>
+	</tbody>
+
+
+</table>

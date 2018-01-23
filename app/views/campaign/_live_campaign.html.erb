@@ -1,0 +1,8 @@
+<div id="live-campaign" class="tab-pane fade in <%= first %>">
+  <h3>Live Campaigns</h3>
+  <% if @live_campaigns.any? %>
+  	<%= render 'campaigns_table', campaigns: @live_campaigns %>
+  <% else %>
+  	<p>No live campaign running. Create by clicking on create button.</p>
+  <% end %>
+</div>

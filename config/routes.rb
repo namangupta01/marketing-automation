@@ -1,4 +1,22 @@
 Rails.application.routes.draw do
+  get 'drip/index'
+
+  post 'drip/create'
+
+  delete 'drip/delete'
+
+  get 'drip/show'
+
+  get 'campaign/index'
+
+  post 'campaign/create'
+
+  delete 'campaign/delete'
+
+  get 'campaign/edit'
+
+  get 'campaign/show'
+
   get 'sms_template/index'
 
   post 'sms_template/create'
@@ -78,6 +96,8 @@ Rails.application.routes.draw do
   get '/email_templates' => 'email_template#index'
 
   get 'sms_templates' => 'sms_template#index'
+
+  get '/campaigns' => 'campaign#index'
 
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
